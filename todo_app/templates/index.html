@@ -2,7 +2,8 @@
 {% block title %}To-Do App{% endblock %}
 
 {% block content %}
-  <div class="jumbotron">
+  <div class="
+  jumbotron">
     <h1 class="display-4">To-Do App</h1>
     <p class="lead">Just another to-do app.</p>
   </div>
@@ -10,14 +11,7 @@
   <form name="Add Todo" method = "POST" action="add">
     <label for="taskname">Task Title : </label><br>
     <input type="text" id="taskname" name="taskname"><br>
-    <label for="taskdesc">Task description : </label><br>
-    <input type="text" id="taskdesc" name="taskdesc"><br>
-    <label for="status">Task Status : </label><br>
-    <select name="status" id="status">
-      {%for status in statuses%}
-      <option value={{ status['id'] }}>{{ status['name'] }}</option>
-      {%endfor%}
-      </select><br>
+    
     <input type="submit" value = "Save">
   </form>
 
@@ -32,12 +26,15 @@
           {%for item in items%}
           <tr>
             <td>{{item.id}}</td>
-            <td>{{item.title}}</td>
+            <td>{{item.name}}</td>
             <td>{{item.status}}</td>
+            <td><a href="/start?id={{item.id}}"> Start </a></td>
+            <td><a href="/complete?id={{item.id}}"> Complete </a></td>
+            <td><a href="/delete?id={{item.id}}"> Delete </a></td>
           </tr>
           {%endfor%}
         </table>
-        <a href = "/add"> Add a task</a>
+        
       </ul>
     </div>
   </div>
