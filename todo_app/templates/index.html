@@ -5,7 +5,7 @@
   <div class="
   jumbotron">
     <h1 class="display-4">To-Do App</h1>
-    <p class="lead">Just another to-do app.</p>
+    <p class="lead">Trello app</p>
   </div>
 
   <form name="Add Todo" method = "POST" action="add">
@@ -18,12 +18,17 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
+
+      
       <ul class="list-group mb-4">
         <!-- List the todo items here -->
+
+        <tr>
+          <td><h2>To do</h2></td>
+        </tr>
         <table>
           <th>ID</th><th>Title</th><th>Status</th>
-          {%for item in items%}
+          {% for item in viewmodel.todo_items %}
           <tr>
             <td>{{item.id}}</td>
             <td>{{item.name}}</td>
@@ -33,9 +38,37 @@
             <td><a href="/delete?id={{item.id}}"> Delete </a></td>
           </tr>
           {%endfor%}
-        </table>
-        
-      </ul>
+
+          <tr>
+            <td><h2>Doing</h2></td>
+          </tr>
+          <th>ID</th><th>Title</th><th>Status</th>
+          {% for item in viewmodel.doing_items %}
+          <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.status}}</td>
+            <td><a href="/start?id={{item.id}}"> Start </a></td>
+            <td><a href="/complete?id={{item.id}}"> Complete </a></td>
+            <td><a href="/delete?id={{item.id}}"> Delete </a></td>
+          </tr>
+          {%endfor%}
+
+          <tr>
+            <td><h2>Done</h2></td>
+          </tr>
+          <th>ID</th><th>Title</th><th>Status</th>
+          {% for item in viewmodel.done_items %}
+          <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.status}}</td>
+            <td><a href="/start?id={{item.id}}"> Start </a></td>
+            <td><a href="/complete?id={{item.id}}"> Complete </a></td>
+            <td><a href="/delete?id={{item.id}}"> Delete </a></td>
+          </tr>
+          {%endfor%}
+        </ul> 
     </div>
   </div>
-{% endblock %}
+{% endblock %}§
