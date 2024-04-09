@@ -52,3 +52,7 @@ You should see output similar to the following:
  * Debugger PIN: 226-556-590
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+type docker run -p 5001:5000 todo-app to run app
+go to http://127.0.0.1:5001 to access app
+
