@@ -56,3 +56,8 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 type docker run -p 5001:5000 todo-app to run app
 go to http://127.0.0.1:5001 to access app
 
+Testing the App
+
+Unit Tests written for app. Tests to be run using command
+
+$ poetry run pytest
