@@ -53,11 +53,28 @@ You should see output similar to the following:
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
 
-type docker run -p 5001:5000 todo-app to run app
-go to http://127.0.0.1:5001 to access app
-
-Testing the App
-
+#Testing the App
 Unit Tests written for app. Tests to be run using command
-
 $ poetry run pytest
+
+# Running/building app via Docker use the following commands in Prod/dev environments
+# Note local .env file is passed in during Docker run.
+
+# running in Production env 
+docker build --target production --tag todo-app:prod .
+
+docker run --env-file ./.env -p 5001:5000 --mount "type=bind,source=$(pwd)/todo_app,target=/opt/todo_app" todo-app:prod
+# http://127.0.0.1:8000/ to run 
+
+# Running in Development env
+docker build --target development --tag todo-app:dev .
+
+docker run --env-file ./.env -p 5001:5000 --mount "type=bind,source=$(pwd)/todo_app,target=/opt/todo_app" todo-app:dev
+# go to http://127.0.0.1:5001 to run app
+
+# Docker Compose 
+docker compose up --build dev
+# go to http://127.0.0.1:5001 to run app
+
+docker compose up --build prod
+# go to http://127.0.0.1:8000/ to run app 
