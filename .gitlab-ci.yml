@@ -1,0 +1,7 @@
+stages:
+  - test
+
+my-job:
+  stage: test
+  script:
+    - echo "Hello, world"
