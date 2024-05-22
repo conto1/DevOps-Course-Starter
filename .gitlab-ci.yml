@@ -4,4 +4,4 @@ stages:
 my-job:
   stage: test
   script:
-    - echo "Hello, world"
+    - echo "Hello, world - why is this not working"
