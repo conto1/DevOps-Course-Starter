@@ -1,7 +1,15 @@
 stages:
   - test
+todo-app:         # This job tests my app
+  #Specify pipeline run in container with Docker CLI installed. set image: docker at top of YAML file
+  image: docker:25.0.3-alpine3.19
+  #“service” - [ docker:dind ] - container runs alongside your job to provide function - a Docker daemon). Do this by adding services: to the top of your YAML file. The tag “dind” stands for Docker in Docker and this container will be able to build Docker images and even run containers within itself.
+  services:
+    - docker:dind
 
 my-job:
   stage: test
   script:
-    - echo "Hello, world - why is this not working"
+  # Docker Build the Image
+    - docker build --target test --tag todo-app:test .
+    - docker run todo-app
