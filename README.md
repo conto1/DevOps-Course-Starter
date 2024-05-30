@@ -78,3 +78,7 @@ docker compose up --build dev
 
 docker compose up --build prod
 # go to http://127.0.0.1:8000/ to run app 
+
+# Running in test env
+# go to http://127.0.0.1:5000 to run app
+#test test push to gitlab repo 
